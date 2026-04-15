@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHAPE — Google Sheet Setup Guide</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#050505;color:#fff;padding:20px 16px 60px}
+.wrap{max-width:600px;margin:0 auto}
+h1{font-size:24px;color:#E8C96A;text-align:center;margin-bottom:8px}
+.sub{text-align:center;color:#aaa;font-size:13px;margin-bottom:30px}
+.step{background:#111;border:2px solid #1E1D18;border-radius:16px;padding:20px;margin-bottom:16px}
+.step-num{display:inline-block;background:#E8C96A;color:#000;font-weight:800;font-size:14px;width:32px;height:32px;border-radius:50%;text-align:center;line-height:32px;margin-right:10px}
+.step-title{font-size:16px;font-weight:700;display:inline;vertical-align:middle}
+.step-body{margin-top:14px;font-size:14px;color:#ccc;line-height:1.8}
+.step-body a{color:#E8C96A;text-decoration:none;font-weight:600}
+.step-body a:hover{text-decoration:underline}
+.highlight{background:#1A1508;border:1px solid #2A2518;border-radius:10px;padding:14px;margin:10px 0;font-size:13px;color:#E8C96A;font-family:monospace;word-break:break-all}
+.warn{background:#2A1508;border:1px solid #5A3518;border-radius:10px;padding:12px;margin:10px 0;font-size:13px;color:#FF9C5A}
+.success{background:#082A15;border:1px solid #185A35;border-radius:10px;padding:12px;margin:10px 0;font-size:13px;color:#45C98A}
+ol{padding-left:20px}
+ol li{margin-bottom:8px}
+.btn{display:inline-block;background:#E8C96A;color:#000;font-weight:700;padding:10px 20px;border-radius:10px;text-decoration:none;font-size:14px;margin:8px 0}
+.code-box{background:#0a0a08;border:2px solid #E8C96A;border-radius:12px;padding:16px;margin:12px 0;font-family:monospace;font-size:11px;color:#E8C96A;white-space:pre-wrap;max-height:300px;overflow:auto;line-height:1.5}
+img{max-width:100%;border-radius:8px;margin:10px 0}
+</style></head><body><div class="wrap">
+<h1>🔧 Google Sheet Setup Guide</h1>
+<div class="sub">One-time setup · Takes 5 minutes · Enables auto-submit for all SHAPE forms</div>
+
+<div class="step">
+<span class="step-num">1</span>
+<span class="step-title">Create a Google Sheet</span>
+<div class="step-body">
+<ol>
+<li>Open <a href="https://sheets.google.com" target="_blank">sheets.google.com</a></li>
+<li>Click <b>+ Blank spreadsheet</b></li>
+<li>Rename it to <b>SHAPE Client Data</b> (click on "Untitled spreadsheet" at the top)</li>
+</ol>
+<div class="success">✅ You now have an empty Google Sheet. Don't add any data — the script will auto-create headers.</div>
+</div>
+</div>
+
+<div class="step">
+<span class="step-num">2</span>
+<span class="step-title">Open Apps Script</span>
+<div class="step-body">
+<ol>
+<li>In your Google Sheet, click <b>Extensions</b> menu (top menu bar)</li>
+<li>Click <b>Apps Script</b></li>
+<li>A new tab opens with a code editor</li>
+</ol>
+<div class="warn">⚠️ You'll see some default code like <code>function myFunction() {}</code> — DELETE ALL OF IT.</div>
+</div>
+</div>
+
+<div class="step">
+<span class="step-num">3</span>
+<span class="step-title">Paste the SHAPE Script</span>
+<div class="step-body">
+<ol>
+<li><b>Select all</b> the default code (Ctrl+A) and <b>delete it</b></li>
+<li>Open the file <b>SHAPE_Google_Apps_Script.js</b> (downloaded with this guide)</li>
+<li>Copy ALL the code from that file</li>
+<li>Paste it into the Apps Script editor</li>
+<li>Click <b>💾 Save</b> (or Ctrl+S)</li>
+<li>When asked for a project name, enter: <b>SHAPE Form Handler</b></li>
+</ol>
+<div class="success">✅ The script handles both pre-mentorship and weekly check-in submissions. It also sends you an email notification for each new submission!</div>
+</div>
+</div>
+
+<div class="step">
+<span class="step-num">4</span>
+<span class="step-title">Deploy as Web App</span>
+<div class="step-body">
+<ol>
+<li>Click the <b>Deploy</b> button (top right, blue button)</li>
+<li>Click <b>New deployment</b></li>
+<li>Click the <b>⚙️ gear icon</b> next to "Select type"</li>
+<li>Choose <b>Web app</b></li>
+<li>Fill in:
+<ul style="list-style:disc;padding-left:20px;margin:6px 0">
+<li><b>Description:</b> SHAPE Forms</li>
+<li><b>Execute as:</b> Me</li>
+<li><b>Who has access:</b> Anyone</li>
+</ul></li>
+<li>Click <b>Deploy</b></li>
+</ol>
+<div class="warn">⚠️ First time? Google will ask you to <b>authorize</b>:
+<ol>
+<li>Click <b>Authorize access</b></li>
+<li>Choose your Google account</li>
+<li>You'll see a warning "Google hasn't verified this app" — click <b>Advanced</b></li>
+<li>Click <b>Go to SHAPE Form Handler (unsafe)</b></li>
+<li>Click <b>Allow</b></li>
+</ol>
+This is safe — you're authorizing YOUR OWN script to write to YOUR OWN sheet.</div>
+</div>
+</div>
+
+<div class="step">
+<span class="step-num">5</span>
+<span class="step-title">Copy the Web App URL</span>
+<div class="step-body">
+<ol>
+<li>After deployment, you'll see a <b>Web app URL</b></li>
+<li>It looks like this:</li>
+</ol>
+<div class="highlight">https://script.google.com/macros/s/AKfycbx...long-string.../exec</div>
+<ol start="3">
+<li>Click <b>Copy</b> to copy the URL</li>
+</ol>
+<div class="warn">⚠️ IMPORTANT: Copy the FULL URL. It's very long — make sure you get all of it.</div>
+</div>
+</div>
+
+<div class="step">
+<span class="step-num">6</span>
+<span class="step-title">Paste in SHAPE CRM</span>
+<div class="step-body">
+<ol>
+<li>Open <b>SHAPE CRM</b> (the HTML file)</li>
+<li>Go to <b>Roster page</b> (main page)</li>
+<li>Scroll down to <b>👨‍🏫 Coach Profile</b></li>
+<li>Paste the URL in the <b>"Google Sheet URL"</b> field</li>
+<li>You should see: <b style="color:#45C98A">✅ Auto-submit ON</b></li>
+</ol>
+<div class="success">✅ DONE! All forms will now auto-submit to your Google Sheet.</div>
+</div>
+</div>
+
+<div class="step">
+<span class="step-num">7</span>
+<span class="step-title">Test It!</span>
+<div class="step-body">
+<ol>
+<li>In SHAPE CRM, download the <b>Onboarding Form</b></li>
+<li>Open the downloaded form in your browser</li>
+<li>Fill in some test data (name: "Test Client", phone: "1234567890", weight: 80, height: 175, age: 30)</li>
+<li>Tap <b>✅ Submit</b></li>
+<li>Open your Google Sheet — you should see a new row! 🎉</li>
+</ol>
+<div class="success">✅ If you see the row, everything works! Now do the same test with a Check-In form.</div>
+<div class="warn">❌ If no row appears:
+<ul style="list-style:disc;padding-left:20px;margin:6px 0">
+<li>Make sure you copied the FULL URL (it's very long)</li>
+<li>Make sure "Who has access" is set to "Anyone"</li>
+<li>Try re-deploying: Deploy → Manage deployments → edit → redeploy</li>
+</ul></div>
+</div>
+</div>
+
+<div class="step">
+<span class="step-num">🎁</span>
+<span class="step-title">Bonus: Email Notifications</span>
+<div class="step-body">
+The script automatically sends you an <b>email notification</b> whenever:
+<ul style="list-style:disc;padding-left:20px;margin:10px 0">
+<li>🆕 A new client submits the <b>Pre-Mentorship form</b> — you get their name, phone, weight, goal, and the import code</li>
+<li>📏 A client submits a <b>Weekly Check-In</b> — you get their weight, measurements, and the import code</li>
+</ul>
+<div class="success">You don't even need to check the Google Sheet! The email has the code — just paste it in SHAPE CRM → Import.</div>
+</div>
+</div>
+
+<div style="text-align:center;padding:30px;color:#555;font-size:12px">
+SHAPE — The Inch Loss Secret · www.shape.ind.in
+</div>
+</div></body></html>
